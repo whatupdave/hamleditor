@@ -1,2 +1,7 @@
-src\**\bin
-src\**\obj
+**/_Resharper.*
+**/*.suo
+
+src/HamlEditor.Package.Tests/bin
+src/HamlEditor.Package.Tests/obj
+src/HamlEditor.Package/Debug
+src/HamlEditor.Package/Release
