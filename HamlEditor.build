@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project name="HamlEditor" xmlns="http://nant.sf.net/release/0.85/nant.xsd">
+
+  
+  <echo message="----------------------------------------------------"/>
+  <echo message="Common Targets:"/>
+  <echo message="  clean"/>
+  <echo message="  build"/>
+  <echo message="  test"/>
+  <echo message="----------------------------------------------------"/>
+
+  <property name="build.output" value="output/" />
+  <property name="build.debug" value="true" />
+  <property name="build.optimize" value="false" />
+  <property name="current.build.defines" value=""/>
+
+  <property name="assembly.title" value="Haml Editor" />
+  <property name="assembly.product" value="Haml Editor" />
+  <property name="assembly.description" value="Haml Editor plugin for Visual Studio" />
+  <property name="assembly.company" value="" />
+  <property name="assembly.copyright" value="" />
+  <property name="assembly.version" value="1.0.0.0" />
+
+  <include buildfile="build/common-tasks.build" />
+
+  <mkdir dir="${build.output}" />
+
+  <target name="clean">
+    <delete dir="${build.output}" />
+    <mkdir dir="${build.output}" />
+  </target>
+
+  <target name="release">
+    <property name="build.debug" value="false" />
+    <property name="build.optimize" value="true" />
+  </target>
+  
+  <target name="build" depends="HamlEditor.Package installer.build"/>
+  
+  <target name="HamlEditor.Package">
+    <property name="compile.assembly" value="${target::get-current-target()}" />
+
+    <property name="assembly.info" value="src/${compile.assembly}/AssemblyInfo.cs" />
+    <call target="common.generate-assemblyinfo" />
+
+    <fileset id="compile.sources">
+      <include name="src/${compile.assembly}/**/*.cs" />
+    </fileset>
+
+    <call target="common.compile-dll" />
+  </target>
+
+  <target name="installer.build" depends="HamlEditor.Package">
+    <loadtasks assembly="tools\WiX\Microsoft.Tools.WindowsInstallerXml.NAntTasks.dll"/>
+    
+    <exec program="tools/RegPkg/RegPkg.exe">
+      <arg value="/wixfile:${build.output}reg.wxi"/>
+      <arg value="/codebase"/>
+      <arg value="/root:SOFTWARE\Microsoft\VisualStudio\9.0"/>
+      <arg value="${build.output}HamlEditor.Package.dll"/>
+    </exec>
+
+    <copy file="build/Setup.wxs" todir="${build.output}" flatten="true" />
+
+    <candle out="${build.output}" exedir="tools/WiX/">
+      <sources>
+        <include name="${build.output}Setup.wxs" />
+      </sources>
+    </candle>
+
+    <light out="${build.output}Setup.msi" exedir="tools/WiX/" rebuild="true">
+      <sources>
+        <include name="${build.output}Setup.wixobj" />
+      </sources>
+    </light>
+  </target>
+    
+
+</project>

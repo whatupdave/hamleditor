@@ -1,0 +1,26 @@
+<Include>
+
+  <Registry Root="HKLM" Key="SOFTWARE\Microsoft\VisualStudio\9.0\Packages\{8b22af7b-1d08-4b7f-835a-e4458703e418}" Value="HamlEditor.HamlPackage, HamlEditor.Package, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" Type="string">
+    <Registry Name="InprocServer32" Value="[SystemFolder]mscoree.dll" Type="string" />
+    <Registry Name="Class" Value="HamlEditor.HamlPackage" Type="string" />
+    <Registry Name="CodeBase" Value="[#File_HamlEditor.Package.dll]" Type="string" />
+    <Registry Name="ID" Value="102" Type="integer" />
+    <Registry Name="MinEdition" Value="Standard" Type="string" />
+    <Registry Name="ProductVersion" Value="1.0.0.0" Type="string" />
+    <Registry Name="ProductName" Value="Haml Editor" Type="string" />
+    <Registry Name="CompanyName" Value="Sentia" Type="string" />
+  </Registry>
+
+  <Registry Root="HKLM" Key="SOFTWARE\Microsoft\VisualStudio\9.0\Languages\File Extensions\.haml" Value="{aca919c7-cd73-4469-8ec7-622ad9a44788}" Type="string" />
+
+  <Registry Root="HKLM" Key="SOFTWARE\Microsoft\VisualStudio\9.0\Languages\Language Services\Haml" Value="{aca919c7-cd73-4469-8ec7-622ad9a44788}" Type="string">
+    <Registry Name="Package" Value="{8b22af7b-1d08-4b7f-835a-e4458703e418}" Type="string" />
+    <Registry Name="LangResID" Value="100" Type="integer" />
+    <Registry Name="EnableCommenting" Value="1" Type="integer" />
+    <Registry Name="DefaultToInsertSpaces" Value="1" Type="integer" />
+  </Registry>
+
+  <Registry Root="HKLM" Key="SOFTWARE\Microsoft\VisualStudio\9.0\Services\{aca919c7-cd73-4469-8ec7-622ad9a44788}" Value="{8b22af7b-1d08-4b7f-835a-e4458703e418}" Type="string">
+    <Registry Name="Name" Value="Haml" Type="string" />
+  </Registry>
+</Include>

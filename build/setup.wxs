@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Product Id="7838f52e-ff9b-4c7c-8ffe-43b022744c13" Name="HamlEditor" Language="1033" Version="1.0.0.0" Manufacturer="Haml" 
+           UpgradeCode="53ce4260-c368-46ac-9d74-0d5e8c2b05b3">
+    <Package InstallerVersion="200" Compressed="yes" />
+
+    <Media Id="1" Cabinet="WixProject.cab" EmbedCab="yes" />
+
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="ProgramFilesFolder">
+        <Directory Id="INSTALLLOCATION" Name="HamlEditor">
+
+          <Component Id="HamlEditor" Guid="21A2B1B1-D74E-4165-875F-D48904CDDCB8">
+            <File Id="File_HamlEditor.Package.dll" KeyPath="yes" 
+                  Name="HamlEditor.Package"
+                  Source="output/HamlEditor.Package.dll" />
+            <?include reg.wxi ?>
+          </Component>
+          
+        </Directory>
+      </Directory>
+    </Directory>
+
+    <Feature Id="ProductFeature" Level="1">
+      <ComponentRef Id="HamlEditor" />
+    </Feature>
+
+    <!--<Property Id="DEVENV_EXE_2005">
+      <RegistrySearch Id="RegSearch_DevenvExe_2005" Root="HKLM" Key="SOFTWARE\Microsoft\VisualStudio\8.0\Setup\VS" Name="EnvironmentPath" Type="raw" />
+    </Property>
+    <CustomAction Id="CA_DevenvSetup2005" Property="DEVENV_EXE_2005" ExeCommand="/setup" Impersonate="no" Execute="deferred"/>-->
+
+    <Property Id="DEVENV_EXE_2008">
+      <RegistrySearch Id="RegSearch_DevenvExe_2008" 
+                      Root="HKLM" 
+                      Key="SOFTWARE\Microsoft\VisualStudio\9.0\Setup\VS" 
+                      Name="EnvironmentPath" 
+                      Type="raw" />
+    </Property>
+    
+    <CustomAction Id="CA_DevenvSetup2008" 
+                  Property="DEVENV_EXE_2008" 
+                  ExeCommand="/setup /nosetupvstemplates" 
+                  Impersonate="no" 
+                  Execute="deferred"/>
+
+    <InstallExecuteSequence>
+      <RemoveExistingProducts After="InstallValidate" />
+      <!--<Custom Action="CA_DevenvSetup2005" Before="InstallFinalize" />-->
+      <Custom Action="CA_DevenvSetup2008" Before="InstallFinalize" />
+    </InstallExecuteSequence>
+
+    <Upgrade Id="53ce4260-c368-46ac-9d74-0d5e8c2b05b3">
+      <UpgradeVersion Minimum="1.0.0.0" Maximum="2.0.0.0" Property="OLDERVERSIONBEINGUPGRADED" IncludeMinimum="yes" />
+    </Upgrade>
+
+
+  </Product>
+</Wix>

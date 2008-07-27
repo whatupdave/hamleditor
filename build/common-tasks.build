@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project name="HamlEditor" xmlns="http://nant.sf.net/release/0.85/nant.xsd">
+
+  <!--
+  <property name="assembly.title" value="Haml Editor" />
+  <property name="assembly.description" value="Haml Editor plugin for Visual Studio" />
+  <property name="assembly.product" value="Haml Editor" />
+  <property name="assembly.company" value="Sentia Australia Pty Ltd" />
+  <property name="assembly.copyright" value="Copyright 2008 Sentia Australia. All rights reserved" />
+  <property name="assembly.version" value="1.0.0.0" />
+  -->
+
+  <!-- Compiling -->
+  <fileset id="compile.references">
+    <include name="lib/*.dll" />
+  </fileset>
+
+  <fileset id="compile.resources">
+    <include name="**/*.resx"/>
+    <include name="**/*.ico"/>
+  </fileset>
+
+  <target name="common.compile-dll" description="Compile sources into a DLL">
+    <csc
+      target="library"
+      define="${current.build.defines}"
+      debug="${build.debug}"
+      optimize="${build.optimize}"
+      output="${build.output}${compile.assembly}.dll"
+      doc="${build.output}${compile.assembly}.xml">
+      <nowarn>
+        <warning number="1591"/>
+        <!-- No XML comment for publicly visible member -->
+      </nowarn>
+      <sources refid="compile.sources" />
+      <references refid="compile.references" />
+      <resources refid="compile.resources" />
+    </csc>
+
+    <copy todir="${build.output}" flatten="true">
+      <fileset refid="compile.references" />
+    </copy>
+  </target>
+
+
+  <!-- Asembly Info -->
+
+  <property name="assembly.allow-partially-trusted-callers" value="true" />
+  <property name="assembly.is-cls-compliant" value="true" />
+  <property name="assembly.is-com-visible" value="true" />
+  <property name="assembly.guid" value="" />
+  <property name="assembly.version.informational" value="${assembly.version}" />
+  <property name="assembly.language" value="CSharp" />
+
+  
+  <target name="common.generate-assemblyinfo" description="Generate AssemblyInfo.cs using assembly.* properties.">
+    <asminfo output="${assembly.info}" language="${assembly.language}">
+      <imports>
+        <import namespace="System" />
+        <import namespace="System.Reflection" />
+        <import namespace="System.Runtime.CompilerServices" />
+        <import namespace="System.Runtime.InteropServices" />
+        <import namespace="System.Security" if="${assembly.allow-partially-trusted-callers}" />
+      </imports>
+      <attributes>
+        <attribute type="ComVisibleAttribute" value="${assembly.is-com-visible}" />
+        <attribute type="GuidAttribute" value="${assembly.guid}" if="${assembly.guid != ''}" />
+        <attribute type="AssemblyTitleAttribute" value="${assembly.title}" />
+        <attribute type="AssemblyDescriptionAttribute" value="${assembly.description}" />
+        <attribute type="AssemblyCompanyAttribute" value="${assembly.company}" />
+        <attribute type="AssemblyProductAttribute" value="${assembly.product}" />
+        <attribute type="AssemblyCopyrightAttribute" value="${assembly.copyright}" />
+        <attribute type="AssemblyVersionAttribute" value="${assembly.version}" />
+        <attribute type="AssemblyInformationalVersionAttribute" value="${assembly.version.informational}" />
+        <attribute type="AssemblyFileVersionAttribute" value="${assembly.version.informational}" />
+        <attribute type="AssemblyDelaySignAttribute" value="false" />
+
+        <!-- For some reason, NAnt doesn't detect that APTCA has a public no-argument constructor -->
+        <attribute asis="true" type="AllowPartiallyTrustedCallersAttribute" if="${assembly.allow-partially-trusted-callers}" />
+      </attributes>
+    </asminfo>
+  </target>
+
+</project>

@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HamlEditor.Package", "src\HamlEditor.Package\HamlEditor.Package.csproj", "{BF257AF8-A18D-415A-B060-884FF59D414B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Examples", "Examples", "{D9510CAC-E83F-4D74-B4C3-29D7D68A15E9}"
+	ProjectSection(SolutionItems) = preProject
+		Examples\_Product.haml = Examples\_Product.haml
+		Examples\List.haml = Examples\List.haml
+		Examples\New.haml = Examples\New.haml
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HamlEditor.Package.Tests", "src\HamlEditor.Package.Tests\HamlEditor.Package.Tests.csproj", "{1FCDCEBC-6577-48DB-A0A9-3070263764FE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{2998A6E4-4CAF-4BF0-A913-DCBB9ECB7563}"
+	ProjectSection(SolutionItems) = preProject
+		build\common-tasks.build = build\common-tasks.build
+		HamlEditor.build = HamlEditor.build
+		build\setup.wxs = build\setup.wxs
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BF257AF8-A18D-415A-B060-884FF59D414B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF257AF8-A18D-415A-B060-884FF59D414B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF257AF8-A18D-415A-B060-884FF59D414B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF257AF8-A18D-415A-B060-884FF59D414B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1FCDCEBC-6577-48DB-A0A9-3070263764FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1FCDCEBC-6577-48DB-A0A9-3070263764FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1FCDCEBC-6577-48DB-A0A9-3070263764FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1FCDCEBC-6577-48DB-A0A9-3070263764FE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

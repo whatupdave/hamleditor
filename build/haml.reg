@@ -1,0 +1,29 @@
+REGEDIT4
+
+[HKEY_LOCAL_MACHINE\Software\Microsoft\VisualStudio\9.0\InstalledProducts\HamlLanguageServicePackage]
+@="#100"
+"Package"="{8b22af7b-1d08-4b7f-835a-e4458703e418}"
+"ProductDetails"="#102"
+"PID"="1.0"
+"LogoID"="#400"
+
+[HKEY_LOCAL_MACHINE\Software\Microsoft\VisualStudio\9.0\Packages\{8b22af7b-1d08-4b7f-835a-e4458703e418}]
+"ID"=dword:00000066
+"MinEdition"="Standard"
+"ProductVersion"="1.0.0.0"
+"ProductName"="Haml Editor"
+"CompanyName"="Sentia"
+[HKEY_LOCAL_MACHINE\Software\Microsoft\VisualStudio\9.0\Packages\{8b22af7b-1d08-4b7f-835a-e4458703e418}]
+@="HamlEditor.HamlLanguageServicePackage, HamlEditor, Version=0.1.3033.12259, Culture=neutral, PublicKeyToken=null"
+"InprocServer32"="C:\\WINDOWS\\system32\\mscoree.dll"
+"Class"="HamlEditor.HamlLanguageServicePackage"
+"Assembly"="HamlEditor, Version=0.1.3033.12259, Culture=neutral, PublicKeyToken=null"
+
+[HKEY_LOCAL_MACHINE\Software\Microsoft\VisualStudio\9.0\Languages\File Extensions\.haml]
+@="{aca919c7-cd73-4469-8ec7-622ad9a44788}"
+
+
+[HKEY_LOCAL_MACHINE\Software\Microsoft\VisualStudio\9.0\Services\{aca919c7-cd73-4469-8ec7-622ad9a44788}]
+@="{8b22af7b-1d08-4b7f-835a-e4458703e418}"
+"Name"="HamlLanguageService"
+

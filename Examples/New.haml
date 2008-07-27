@@ -1,0 +1,19 @@
+%h2 Add Product
+%form{action="/Products/Create", method="post"}
+  %table
+    %tr
+      %td Name:
+      %td
+        %input{id="ProductName", type="text", name="ProductName"}
+    %tr
+      %td Category:
+      %td#id.class= Html.Select("CategoryID", ViewData.Categories)
+    %tr
+      %td Supplier:
+      %td= Html.Select("SupplierID", ViewData.Suppliers)
+    %tr
+      %td Unit Price:
+      %td 
+        %input{id="UnitPrice", type="text", name="UnitPrice"}
+  %p
+  _ Shared\Button
