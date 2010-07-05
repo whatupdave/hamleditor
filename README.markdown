@@ -1,3 +1,5 @@
+UPDATE: This project has been superseded by the most excellent [http://github.com/NHaml/NHamlVisualStudio](http://github.com/NHaml/NHamlVisualStudio)
+
 This plugin will add syntax highlighting to Visual Studio 2008 for haml files.
 
 BUILD
